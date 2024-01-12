@@ -1,0 +1,6 @@
+CREATE TABLE tb_produtos (
+    cd_produto BIGINT AUTO_INCREMENT PRIMARY KEY,
+    nm_produto VARCHAR(150) NOT NULL,
+    dc_produto VARCHAR(255) NOT NULL,
+    pr_produto DECIMAL(10,2) NOT NULL
+);
