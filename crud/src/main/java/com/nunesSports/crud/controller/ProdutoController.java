@@ -20,7 +20,7 @@ public class ProdutoController {
     @Autowired
     private ProdutoService produtosService;
 
-    @PostMapping
+    @PostMapping()
     public ResponseEntity create(@RequestBody @Valid CreateProdutoDTO data, UriComponentsBuilder uriBuilder) {
         Produto produtoCriado = new Produto(data);
         Produto produtoSalvo = produtosService.create(produtoCriado);
@@ -35,8 +35,8 @@ public class ProdutoController {
     }
 
     @GetMapping
-    public List<ResponseEntity<GetOrUpdateProdutoDTO>> getAll() {
-        return produtosService.getAll().stream().map(GetOrUpdateProdutoDTO::new).map(ResponseEntity::ok).collect(Collectors.toList());
+    public ResponseEntity<List<Produto>> getAll() {
+        return ResponseEntity.ok(produtosService.getAll());
     }
 
     @PutMapping("/{id}")
@@ -54,3 +54,4 @@ public class ProdutoController {
 
 
 }
+
